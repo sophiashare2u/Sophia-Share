@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sophia Share — Gói Bắt Mạch Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fffdee;
+    --sage:#b0d1be;
+    --sage-dark:#8fb89f;
+    --forest:#2e3d24;
+    --forest-2:#3c4f2d;
+    --red:#c7492f;
+    --red-dark:#a83c26;
+    --ink:#332e22;
+    --white:#fffdf6;
+    --line: rgba(46,61,36,.14);
+    --shadow: 0 14px 34px rgba(46,61,36,.14);
+    --font-head:'Oswald', sans-serif;
+    --font-body:'Roboto', sans-serif;
+    --icon-green:#65954f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 clamp(24px, 6vw, 72px);}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--forest); opacity:.75;
+  }
+  .eyebrow::before{content:""; width:20px; height:2px; background:var(--red); display:inline-block;}
+
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ===== HEADER / HERO ===== */
+  header.hero{
+    position:relative;
+    background:var(--sage);
+    padding:52px 0 70px;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute; top:-120px; right:-160px;
+    width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, var(--cream), transparent 70%);
+    opacity:.5;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-head);
+    font-weight:700; font-size:19px; color:var(--forest);
+    letter-spacing:.02em; text-transform:uppercase;
+  }
+  .brand .dot{width:9px; height:9px; border-radius:50%; background:var(--red);}
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:56px;
+    align-items:center; margin-top:44px; position:relative; z-index:1;
+  }
+  .hero-kicker{
+    display:flex; align-items:flex-start; gap:10px;
+    color:var(--forest-2); font-size:15px; margin-bottom:18px; max-width:480px;
+  }
+  .hero-kicker .bar{flex-shrink:0; width:3px; height:38px; background:var(--red); margin-top:2px;}
+  h1.hero-title{
+    font-family:var(--font-head);
+    font-size:clamp(30px, 4vw, 44px);
+    font-weight:700; line-height:1.04; letter-spacing:0;
+    color:var(--forest);
+    margin-bottom:22px;
+  }
+  h1.hero-title .accent{color:var(--red);}
+  .hero-body p{color:var(--ink); opacity:.92; margin-bottom:16px; max-width:520px; font-size:15.5px;}
+  .hero-list{list-style:none; margin:22px 0 0; display:flex; flex-direction:column; gap:12px; max-width:520px;}
+  .hero-list li{
+    display:flex; gap:12px; align-items:baseline;
+    font-weight:600; color:var(--forest-2); font-size:15.5px;
+  }
+  .hero-list li::before{
+    content:"•"; color:var(--red); font-weight:900; font-size:18px; flex-shrink:0;
+  }
+  .hero-portrait{position:relative;}
+  .hero-portrait .frame{
+    position:relative; overflow:hidden; box-shadow:0 16px 30px rgba(46,61,36,.18);
+  }
+  .hero-portrait img{aspect-ratio:4/5; object-fit:cover;}
+  .portrait-caption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:44px 22px 20px;
+    background:linear-gradient(to top, rgba(46,61,36,.95) 0%, rgba(46,61,36,.72) 40%, rgba(46,61,36,0) 100%);
+  }
+  .portrait-caption p{color:var(--white); font-weight:700; font-size:15px; max-width:250px; margin:0;}
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:66px 0;}
+  .band-sage{background:var(--sage); color:var(--forest);}
+  .band-cream{background:var(--cream); color:var(--ink);}
+  h2.section-title{
+    font-family:var(--font-head);
+    font-size:clamp(24px,3.2vw,34px);
+    font-weight:700; letter-spacing:0; line-height:1.1;
+    color:var(--forest); margin-bottom:14px; max-width:760px;
+    text-wrap:balance;
+  }
+  .band-sage h2.section-title{color:var(--forest);}
+  .section-sub{max-width:100%; opacity:.85; margin-bottom:34px; font-size:15.5px; text-align:justify;}
+
+  /* pain cards */
+  .pain-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:28px 0 36px;}
+  .pain-card{
+    background:var(--white); border-radius:0; border-left:4px solid var(--sage-dark);
+    padding:22px 24px;
+    box-shadow:0 4px 16px rgba(46,61,36,.07); font-weight:400; font-size:15.5px; color:var(--ink);
+  }
+  .quote-strip{
+    border-left:4px solid var(--forest);
+    background:var(--sage); border-radius:0;
+    padding:20px 26px; font-family:var(--font-head); font-weight:700; font-size:22px; color:var(--forest);
+    margin-bottom:34px;
+  }
+  .media-frame{border-radius:16px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:32px;}
+  .media-frame img{width:100%; height:320px; object-fit:cover;}
+
+  /* buttons */
+  .btn-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:16px 30px; border-radius:999px; font-weight:800; font-size:14.5px;
+    letter-spacing:.03em; text-transform:uppercase; cursor:pointer;
+    border:2px solid transparent; text-decoration:none;
+  }
+  .btn-primary{
+    background:var(--red); color:var(--white);
+    box-shadow:0 10px 24px rgba(199,73,47,.38);
+    animation:pulse-btn 1.3s ease-in-out infinite;
+  }
+  .btn-primary:hover{background:var(--red-dark); animation-play-state:paused; transform:translateY(-2px);}
+  .btn-outline{
+    background:transparent; color:var(--forest); border-color:var(--forest);
+  }
+  .btn-outline:hover{background:var(--forest); color:var(--white);}
+  @keyframes pulse-btn{
+    0%,100%{ transform:translateY(0) scale(1); box-shadow:0 10px 24px rgba(199,73,47,.38);}
+    50%{ transform:translateY(-4px) scale(1.025); box-shadow:0 16px 30px rgba(199,73,47,.48);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn-primary{animation:none;}
+    .reveal{transition:none; opacity:1; transform:none;}
+  }
+
+  /* audit steps */
+  .steps{display:flex; flex-direction:column; gap:20px; margin-top:8px;}
+  .step-card{
+    display:grid; grid-template-columns:230px 1fr; gap:26px;
+    background:var(--white); border-radius:16px; padding:22px; box-shadow:var(--shadow);
+    align-items:center;
+  }
+  .step-card .step-media{border-radius:12px; overflow:hidden; height:150px;}
+  .step-card .step-media img{width:100%; height:100%; object-fit:cover;}
+  .step-card h3{font-family:var(--font-head); font-size:21px; font-weight:700; letter-spacing:.01em; text-transform:uppercase; color:var(--forest); margin-bottom:12px;}
+  .step-card .step-intro{font-size:15.5px; color:var(--ink); opacity:.9; margin-bottom:10px;}
+  .step-card ul{list-style:none; display:flex; flex-direction:column; gap:6px;}
+  .step-card ul li{font-size:15.5px; color:var(--ink); opacity:.9; padding-left:18px; position:relative;}
+  .step-card ul li::before{content:"•"; color:var(--red); position:absolute; left:0; font-weight:900;}
+
+  /* deliverables */
+  .deliverable{margin-bottom:18px;}
+  .doc-title{
+    border-left:4px solid var(--forest);
+    padding:10px 20px;
+    font-family:var(--font-head); font-weight:600; font-size:22px; line-height:1.3;
+    color:var(--forest);
+  }
+  .doc-sub{
+    padding:8px 24px 0; font-size:15.5px; color:var(--ink); opacity:.85;
+  }
+
+  /* fit grid */
+  .fit-group{margin-bottom:36px;}
+  .fit-group:last-child{margin-bottom:0;}
+  .fit-group > h3{font-family:var(--font-head); font-size:22px; font-weight:600; letter-spacing:0; color:var(--forest); margin-bottom:22px;}
+  .fit-group > h3.fit-group-title-main{font-size:clamp(24px,3.2vw,34px); font-weight:700; margin-bottom:28px;}
+  .fit-wrap{display:grid; grid-template-columns:1fr 1fr; gap:26px 34px;}
+  .fit-item{display:flex; gap:16px; align-items:flex-start; font-size:15.5px; color:var(--forest); opacity:.92;}
+  .fit-item .ic{
+    flex-shrink:0; width:44px; height:44px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+  }
+  .fit-item .ic svg{width:22px; height:22px;}
+  .fit-group.yes .ic{background:var(--icon-green);}
+  .fit-group.no .ic{background:var(--red);}
+
+  /* about */
+  .about-photos{
+    display:flex; gap:12px; margin:28px 0 32px;
+    padding:8px 8px 20px;
+    overflow-x:auto; scroll-snap-type:x mandatory; cursor:grab;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .about-photos::-webkit-scrollbar{display:none;}
+  .about-photos.dragging{cursor:grabbing; scroll-snap-type:none;}
+  .about-photos img{
+    flex:0 0 auto; width:240px; height:180px; object-fit:cover; border-radius:0;
+    box-shadow:0 4px 14px rgba(46,61,36,.1); scroll-snap-align:start; user-select:none; -webkit-user-drag:none;
+  }
+  .about-facts{list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:26px;}
+  .about-facts li{font-size:15.5px; padding-left:20px; position:relative; opacity:.92;}
+  .about-facts li::before{content:"•"; color:var(--red); position:absolute; left:0; font-size:18px; line-height:1.1;}
+  .about-facts li b{color:var(--forest);}
+  .achieve-block{padding:6px 0;}
+  .achieve-label{font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--red); margin-bottom:14px; display:block;}
+  .achieve-list{list-style:none; display:flex; flex-direction:column; gap:10px; border-left:4px solid var(--red); padding:6px 0 6px 24px;}
+  .achieve-list li{font-family:var(--font-head); font-weight:700; font-size:22px; line-height:1.4; color:var(--forest); padding-left:20px; position:relative;}
+  .achieve-list li::before{content:"–"; position:absolute; left:0; color:var(--forest);}
+  .achieve-list li span{color:var(--forest);}
+
+  /* final cta */
+  /* TikTok feed section */
+  .tt-section{background:var(--white);}
+  .tt-header{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:20px; margin-bottom:28px;
+  }
+  .tt-profile{display:flex; align-items:center; gap:14px;}
+  .tt-avatar{
+    width:56px; height:56px; border-radius:50%; object-fit:cover;
+    background:var(--sage); flex-shrink:0;
+  }
+  .tt-name{font-family:var(--font-head); font-weight:700; font-size:18px; color:var(--forest);}
+  .tt-handle{font-size:14px; color:var(--ink); opacity:.6;}
+  .tt-stats{display:flex; gap:24px;}
+  .tt-right{display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
+  .tt-stat{text-align:center;}
+  .tt-stat b{display:block; font-size:19px; font-weight:800; color:var(--forest);}
+  .tt-stat span{font-size:12.5px; color:var(--ink); opacity:.65; text-transform:uppercase; letter-spacing:.04em;}
+  .tt-follow-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--forest); color:var(--white); font-weight:700; font-size:14px;
+    padding:10px 20px; border-radius:8px; text-decoration:none; white-space:nowrap;
+  }
+  .tt-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:4px;
+  }
+  .tt-thumb{
+    position:relative; aspect-ratio:1/1; overflow:hidden;
+    background:var(--sage) center/cover no-repeat; display:block;
+    background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.15));
+  }
+  .tt-thumb::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%);
+  }
+  .tt-thumb .tt-play{
+    position:absolute; top:10px; right:10px; z-index:2; width:18px; height:18px; opacity:.9;
+  }
+  .tt-thumb .tt-caption{
+    position:absolute; left:10px; right:10px; bottom:10px; z-index:2;
+    color:var(--white); font-size:13px; font-weight:600; line-height:1.35;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .tt-thumb.tt-empty{
+    display:flex; align-items:center; justify-content:center;
+    color:var(--forest); opacity:.4; font-size:13px; text-align:center; padding:10px;
+  }
+  @media (max-width:560px){
+    .tt-stats{gap:20px;}
+  }
+  .final-cta{
+    text-align:left; padding:70px 0 78px;
+  }
+  .final-cta .quote-strip{
+    text-align:left; max-width:100%; margin:0 0 30px; font-size:18px;
+    background:var(--white); border-left-color:var(--red);
+  }
+  .final-cta p.note{max-width:100%; margin:0 0 30px; opacity:.85; font-size:15.5px; text-align:justify;}
+  .final-cta .btn-row{justify-content:flex-start;}
+  .final-note{margin-top:16px; font-size:12.5px; opacity:.7; font-style:italic;}
+
+  footer{
+    background:var(--white); color:var(--ink); padding:36px 0; border-top:1px solid var(--line);
+  }
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+  .foot-brand{font-weight:800; letter-spacing:.05em; font-size:14px; text-transform:uppercase; color:var(--ink); opacity:.9;}
+  .foot-contact{display:flex; gap:26px; flex-wrap:wrap; font-size:14px; color:var(--ink); opacity:.9;}
+  .foot-contact span{display:inline-flex; align-items:center; gap:8px;}
+  .foot-contact svg{width:16px; height:16px; flex-shrink:0;}
+  .foot-bottom{text-align:center; margin-top:22px; font-size:12.5px; color:var(--ink); opacity:.6;}
+
+  /* mobile */
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr; gap:36px;}
+    .hero-portrait{order:-1; max-width:320px; margin:0 auto;}
+    .pain-grid{grid-template-columns:1fr;}
+    .fit-wrap{grid-template-columns:1fr;}
+    .step-card{grid-template-columns:1fr;}
+    .step-card .step-media{height:170px;}
+    .about-photos img{width:200px; height:150px;}
+    section{padding:48px 0;}
+    .foot-grid{flex-direction:column; text-align:center;}
+    .tt-header{flex-direction:column; align-items:flex-start;}
+    .tt-stats{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">Sophia Share</div>
+
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker"><span class="bar"></span>Dành cho Founder / CEO Trung tâm đào tạo Kỹ năng &amp; Phát triển Chuyên môn, Khóa học Online</div>
+        <h1 class="hero-title reveal">Thoát Bẫy <span class="accent">"Đổ Tiền Quảng Cáo Nhưng Doanh Số Đứng Yên"</span> Cho Trung Tâm Đào Tạo Của Anh/Chị</h1>
+        <div class="hero-body reveal">
+          <p>Anh/Chị đang điều hành một trung tâm đào tạo kỹ năng, các khóa học online, liên đào hay bán hàng, và nhận ra:</p>
+        </div>
+        <ul class="hero-list reveal">
+          <li>Ngân sách Marketing tăng đều, nhưng lượng học viên chốt không tăng tương ứng.</li>
+          <li>Khách hàng tiềm năng ngắt kết nối giữa chừng, sales chạy đuổi theo mà thiếu một quy trình rõ ràng.</li>
+        </ul>
+        <div class="hero-body reveal" style="margin-top:18px;">
+          <p><strong style="color:var(--forest)">Anh/Chị biết hệ thống Tuyển sinh &amp; Marketing của trung tâm đang gặp vấn đề</strong> — nhưng không biết phải bắt đầu sửa từ đâu để tối ưu tỷ suất hoàn vốn (ROI)?</p>
+        </div>
+        <div class="btn-row reveal" style="margin-top:26px;">
+          <a href="#cta" class="btn btn-primary">Đặt lịch "Bắt Mạch" ngay</a>
+        </div>
+      </div>
+
+      <div class="hero-portrait reveal">
+        <div class="frame">
+          <img src="https://picsum.photos/seed/sophia-portrait/700/875" alt="Sophia — Founder Sophia Share">
+          <div class="portrait-caption">
+            <p>Chuyên gia vận hành Marketing &amp; Sales cho ngành giáo dục</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="band-cream">
+  <div class="wrap">
+    <h2 class="section-title reveal">Anh/Chị thấy hoạt động kinh doanh có ít nhất một trong những tình huống dưới đây:</h2>
+
+    <div class="pain-grid">
+      <div class="pain-card reveal">Marketing chạy quảng cáo, lead về — nhưng Sales báo "lead rác", Marketing báo "Sales không chốt được" → hai bên đổ lỗi nhau, không ai sửa gốc rễ.</div>
+      <div class="pain-card reveal">Nhân viên giỏi nghỉ là cả hệ thống lung lay, vì quy trình chốt sales đang nằm trong bộ nhớ của một người.</div>
+      <div class="pain-card reveal">Ngân sách Marketing tháng nào cũng chi, nhưng không biết chi phí nào sinh ra lãi, phí nào đang lãng phí.</div>
+      <div class="pain-card reveal">Cảm giác doanh nghiệp đang "chạy bằng bản năng" thay vì vận hành bằng hệ thống.</div>
+    </div>
+
+    <div class="media-frame reveal">
+      <img src="https://picsum.photos/seed/team-meeting/1100/620" alt="Đội ngũ họp bàn chiến lược">
+    </div>
+
+    <div class="quote-strip reveal">Thứ anh/chị thiếu không phải là công cụ hay nhân sự mới.<br>Mà cần một bản đồ định vị chính xác vấn đề.</div>
+
+    <div class="btn-row reveal">
+      <a href="#cta" class="btn btn-primary">Đặt lịch "Bắt Mạch" ngay</a>
+      <a href="#about" class="btn btn-outline">Tư vấn thêm</a>
+    </div>
+  </div>
+</section>
+
+<section class="band-sage">
+  <div class="wrap">
+    <h2 class="section-title reveal">Sophia không chạy ads mà sửa lại cỗ máy kiếm tiền cho anh/chị!</h2>
+    <p class="section-sub reveal">Gói Bắt Mạch của Sophia Share là dịch vụ tư vấn phễu Marketing thực chiến, giúp bạn dừng việc đoán mò và bắt đầu quản trị bằng Data. Không phải nghe kể rồi đưa ra checklist chung chung — đây là quá trình "bắt mạch" thực sự vào hệ thống đang chạy. Sophia vào vai "bác sĩ" để bắt mạch, chẩn đoán toàn bộ hệ thống hiện tại của doanh nghiệp.</p>
+
+    <div class="steps">
+      <div class="step-card reveal">
+        <div class="step-media"><img src="https://picsum.photos/seed/audit-dashboard/500/400" alt="Audit phễu marketing"></div>
+        <div>
+          <h3>1. Audit phễu Marketing &amp; Bán hàng hiện tại</h3>
+          <ul>
+            <li>Rà soát dòng chảy data, xác định điểm nghẽn của phễu, khách hàng tiềm năng đang "rò rỉ" ở đoạn nào.</li>
+            <li>Nhận định điểm nghẽn giữa Sales–Marketing: hai team đang phối hợp theo cách nào? Quy trình chuyển giao lead có chuẩn không, hay đang chạy bằng… miệng?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-media"><img src="https://picsum.photos/seed/funnel-design/500/400" alt="Thiết kế phễu Sales Marketing"></div>
+        <div>
+          <h3>2. Thiết kế phễu Sales &amp; Marketing cá nhân hóa</h3>
+          <p class="step-intro">Sau bước 1, Sophia kê đơn và vẽ lại phễu Sales &amp; Marketing dành riêng cho doanh nghiệp:</p>
+          <ul>
+            <li>Thiết kế phễu Sales &amp; Marketing cá nhân hóa theo đúng mô hình kinh doanh, không copy template.</li>
+            <li>Xây dựng tiêu chuẩn phân loại Marketing Qualified Lead (MQL) để thống nhất giữa Marketing và Sales.</li>
+            <li>Thiết kế Workflow phối hợp giữa hai bộ phận nhằm giảm thất thoát khách hàng trong quá trình chuyển giao.</li>
+            <li>Xây dựng bộ KPI và Dashboard quản trị giúp Founder theo dõi hiệu quả vận hành bằng dữ liệu thay vì cảm tính. Giúp Anh/Chị biết khi nào nên bơm tiền, khi nào phải phanh lại để tránh lỗ dòng tiền.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-cream">
+  <div class="wrap">
+    <h2 class="section-title reveal">Không phải là một bản báo cáo cho đẹp, mà là một đề xuất thực tế để Anh/Chị hành động ngay!</h2>
+    <p class="section-sub reveal" style="color:var(--forest); opacity:.85; max-width:100%;">Khi kết thúc Gói Bắt Mạch, anh/chị sẽ cầm trên tay 2 tài liệu "cá nhân hóa" dành riêng cho doanh nghiệp của mình:</p>
+
+    <div class="deliverable reveal">
+      <div class="doc-title">Tài liệu 1: Chỉ ra những điểm nghẽn trong hoạt động Sales &amp; Marketing</div>
+      <div class="doc-sub">Xây dựng Marketing Funnel và Action Plan</div>
+    </div>
+    <div class="deliverable reveal">
+      <div class="doc-title">Tài liệu 2: Bản vẽ Sales &amp; Marketing Funnel và khung Workflow phối hợp hai team, công thức quản trị tài&nbsp;chính, dòng tiền dựa trên data — sẵn sàng để triển khai.</div>
+    </div>
+  </div>
+</section>
+
+<section class="band-sage" id="about">
+  <div class="wrap">
+    <div class="fit-group yes reveal">
+      <h3 class="fit-group-title-main">Gói này DÀNH CHO Anh/Chị nếu:</h3>
+      <div class="fit-wrap">
+        <div class="fit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7.5" r="3.8" fill="#fff"/><path d="M4 20.5c0-4.4 3.6-7.8 8-7.8s8 3.4 8 7.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>Anh/Chị là Founder/CEO của trung tâm đào tạo kỹ năng, kỹ năng lãnh đạo, giao tiếp, bán hàng, professional development.</div>
+        <div class="fit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="8" r="3" fill="#fff"/><circle cx="16" cy="9" r="2.4" fill="#fff"/><path d="M2.5 20c0-3.6 2.7-6.3 6-6.3s6 2.7 6 6.3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><path d="M14.5 20c0-2.7 1.8-5 4-5.7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>Doanh nghiệp đã có doanh thu, đã có team Sales – Marketing từ 3–15 người nhưng vận hành rối.</div>
+        <div class="fit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 21l-1-1v-6H3.8a2 2 0 0 1-2-2.3L3.2 5A2 2 0 0 1 5.2 3H17v11l-8 7z"/><rect x="17" y="3" width="3.2" height="11"/></svg></div>Anh/Chị đã chán việc phải tự mình đi xử lý sự vụ, chữa cháy mỗi ngày.</div>
+        <div class="fit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 8.3a3.7 3.7 0 1 0 0 7.4 3.7 3.7 0 0 0 0-7.4zm9.1 3.7c0-.4 0-.8-.1-1.1l1.9-1.5-1.9-3.2-2.2 1a7 7 0 0 0-1.9-1.1l-.4-2.4H9.5l-.4 2.4a7 7 0 0 0-1.9 1.1l-2.2-1L3.1 9.4l1.9 1.5a7 7 0 0 0 0 2.2l-1.9 1.5 1.9 3.2 2.2-1a7 7 0 0 0 1.9 1.1l.4 2.4h4.9l.4-2.4a7 7 0 0 0 1.9-1.1l2.2 1 1.9-3.2-1.9-1.5c.1-.3.1-.7.1-1.1z"/></svg></div>Anh/Chị muốn xây hệ thống để nhân bản, để scale up, hệ thống tự vận hành ngay khi mình vắng mặt.</div>
+      </div>
+    </div>
+
+    <div class="fit-group no reveal">
+      <h3>Gói này KHÔNG DÀNH CHO Anh/Chị nếu:</h3>
+      <div class="fit-wrap">
+        <div class="fit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9 21l-1-1v-6H3.8a2 2 0 0 1-2-2.3L3.2 5A2 2 0 0 1 5.2 3H17v11l-8 7z"/><rect x="17" y="3" width="3.2" height="11"/></svg></div>Anh/Chị đang tìm bên chạy ads giá rẻ, cam kết ra đơn ngay lập tức.</div>
+        <div class="fit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 20l11-11 2 2-11 11-2-2zm10.2-15.4l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2zM4.3 3.6l.7 1.5L6.5 5.8 5 6.5l-.7 1.5L3.6 6.5 2 5.8l1.6-.7.7-1.5z"/></svg></div>Anh/Chị muốn một giải pháp màu hồng, không muốn nghe sự thật trần trụi về doanh nghiệp mình.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-cream">
+  <div class="wrap">
+    <h2 class="section-title reveal">Sophia Share không phải là một agency chạy quảng&nbsp;cáo!</h2>
+    <p class="section-sub reveal">Sophia là đối tác chiến lược vận hành cho SME ngành giáo dục và đào tạo kỹ năng. Sophia tin rằng marketing giỏi không phải là đổ nhiều tiền hơn, mà là bịt những lỗ thủng đang làm tiền của anh/chị chảy đi mỗi ngày. Sophia Share là kênh chia sẻ kiến thức thực chiến về Sales &amp; Marketing — không lý thuyết suông, không buzzword, chỉ những gì thực sự vận hành được trong môi trường kinh doanh thực tế.</p>
+
+    <div class="about-photos reveal" id="aboutSlider">
+      <img src="https://picsum.photos/seed/team-work/400/300" alt="Đội ngũ làm việc">
+      <img src="https://picsum.photos/seed/education-training/400/300" alt="Đào tạo và giáo dục">
+      <img src="https://picsum.photos/seed/award-ceremony/400/300" alt="Trao chứng nhận">
+      <img src="https://picsum.photos/seed/graduation-day/400/300" alt="Lễ tốt nghiệp học viên">
+    </div>
+
+    <ul class="about-facts reveal">
+      <li><b>Expert in Data-driven Operations &amp; Marketing Education.</b></li>
+      <li>Hơn 10 năm kinh nghiệm thực chiến trong vai trò quản lý và điều hành chiến lược Marketing tại các tổ chức giáo dục lớn.</li>
+      <li><b>Former Marketing Business Partner Manager</b> tại Wall Street English, trực tiếp điều hành toàn bộ chiến lược Marketing cho Wall Street English và Kids&amp;Us.</li>
+      <li><b>Former Regional Manager</b> tại International Learning Center (Philippines), trực tiếp hoạch định kế hoạch kinh doanh, tuyển sinh tổng thể và mở rộng nhận diện thương hiệu các nước Đông Nam Á.</li>
+    </ul>
+
+    <div class="achieve-block reveal">
+      <span class="achieve-label">Achievement</span>
+      <ul class="achieve-list">
+        <li><span>×2</span> doanh số tại Intertu Education.</li>
+        <li>Chạm mốc <span>120%</span> doanh số trong mùa thấp điểm khi đương nhiệm tại Wall Street English và Kids&amp;Us.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band-sage final-cta" id="cta">
+  <div class="wrap">
+    <h2 class="section-title reveal" style="margin-bottom:28px;">Đã đến lúc ngừng đoán mò!</h2>
+    <div class="quote-strip reveal">Một chiếc xe đang rò rỉ xăng — bạn có đổ thêm xăng vào không? Hay bạn sửa chỗ rò rỉ trước?</div>
+    <p class="note reveal">Hầu hết doanh nghiệp tiếp tục tăng ngân sách quảng cáo trong khi cái phễu bên dưới vẫn đang thủng — kết quả là đốt tiền nhanh hơn. Gói "Bắt Mạch" Marketing giúp bạn biết chính xác đang thủng ở đâu, trước khi quyết định đổ thêm bất kỳ nguồn lực nào vào.</p>
+    <div class="btn-row reveal">
+      <a href="#cta" class="btn btn-primary">Tôi muốn đặt lịch "Bắt Mạch" Marketing</a>
+    </div>
+    <div class="final-note reveal">*Sophia chỉ Audit chuyên sâu cho 5 doanh nghiệp mỗi tháng. Ưu tiên doanh nghiệp đăng ký trước.</div>
+  </div>
+</section>
+
+<section class="band-cream tt-section" id="tiktok">
+  <div class="wrap">
+    <div class="tt-header reveal">
+      <div class="tt-profile">
+        <img class="tt-avatar" src="https://placehold.co/112x112/b0d1be/2e3d24?text=SS" alt="Sophia Share TikTok avatar" id="tt-avatar-img">
+        <div>
+          <div class="tt-name">Sophia Share</div>
+          <div class="tt-handle">@sophiashare</div>
+        </div>
+      </div>
+      <div class="tt-right">
+        <div class="tt-stats">
+          <div class="tt-stat"><b>1.059</b><span>Followers</span></div>
+          <div class="tt-stat"><b>4.612</b><span>Likes</span></div>
+        </div>
+        <a href="https://www.tiktok.com/@sophiashare" target="_blank" rel="noopener" class="tt-follow-btn">Xem kênh TikTok</a>
+      </div>
+    </div>
+
+    <!--
+      HƯỚNG DẪN CHÈN VIDEO:
+      Mỗi ô .tt-thumb bên dưới có data-tiktok-url="" đang để trống.
+      Dán link video TikTok thật vào thuộc tính đó, ví dụ:
+      <a class="tt-thumb" data-tiktok-url="https://www.tiktok.com/@sophiashare/video/1234567890123456789"></a>
+      Script ở cuối trang sẽ tự gọi TikTok oEmbed để lấy ảnh thumbnail + caption thật và hiển thị vào ô đó.
+      Chỉ cần 1 dòng data-tiktok-url cho mỗi video, không cần tự tải ảnh.
+    -->
+    <div class="tt-grid" id="tt-grid">
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 1</a>
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 2</a>
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 3</a>
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 4</a>
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 5</a>
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 6</a>
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 7</a>
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 8</a>
+      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 9</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">Sophia Share · Marketing Service 2026</div>
+      <div class="foot-contact">
+        <span><svg viewBox="0 0 24 24" fill="#3c4f2d"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg> Hotline: 0977 314 006</span>
+        <span><svg viewBox="0 0 24 24" fill="#3c4f2d"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1.4 2L12 12.5 19.6 7H4.4zM20 8.3l-7.4 5.4a1 1 0 0 1-1.2 0L4 8.3V17h16V8.3z"/></svg> Email: ngocdiem.luu@gmail.com</span>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 All rights reserved — Sophia Share</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll('.reveal').forEach((el, i)=>{
+    el.style.transitionDelay = (i % 4) * 60 + 'ms';
+    io.observe(el);
+  });
+
+  // Draggable / swipeable photo slider
+  const slider = document.getElementById('aboutSlider');
+  if(slider){
+    let isDown=false, startX=0, scrollLeft=0;
+    slider.addEventListener('mousedown', (e)=>{
+      isDown=true; slider.classList.add('dragging');
+      startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
+    });
+    ['mouseleave','mouseup'].forEach(ev=>slider.addEventListener(ev, ()=>{
+      isDown=false; slider.classList.remove('dragging');
+    }));
+    slider.addEventListener('mousemove', (e)=>{
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      slider.scrollLeft = scrollLeft - (x - startX) * 1.2;
+    });
+  }
+
+  // --- TikTok video thumbnails via oEmbed ---
+  // Chỉ cần điền data-tiktok-url="LINK_VIDEO_THAT" ở mỗi thẻ .tt-thumb trong HTML,
+  // script này sẽ tự lấy ảnh thumbnail + caption thật từ TikTok, không cần tải ảnh thủ công.
+  document.querySelectorAll('.tt-thumb').forEach(async (el)=>{
+    const url = el.getAttribute('data-tiktok-url');
+    if(!url) return; // ô chưa có link -> giữ nguyên placeholder
+    try{
+      const res = await fetch('https://www.tiktok.com/oembed?url=' + encodeURIComponent(url));
+      if(!res.ok) throw new Error('oEmbed request failed');
+      const data = await res.json();
+      el.classList.remove('tt-empty');
+      el.textContent = '';
+      if(data.thumbnail_url){
+        el.style.backgroundImage = `linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.15)), url('${data.thumbnail_url}')`;
+      }
+      const play = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      play.setAttribute('class','tt-play'); play.setAttribute('viewBox','0 0 24 24');
+      play.innerHTML = '<path fill="#ffffff" d="M8 5v14l11-7z"/>';
+      el.appendChild(play);
+      const cap = document.createElement('div');
+      cap.className = 'tt-caption';
+      cap.textContent = data.title || '';
+      el.appendChild(cap);
+    }catch(err){
+      console.warn('Không lấy được dữ liệu TikTok cho', url, err);
+    }
+  });
+</script>
+
+</body>
+</html>
