@@ -132,7 +132,7 @@
     padding:20px 26px; font-family:var(--font-head); font-weight:700; font-size:22px; color:var(--forest);
     margin-bottom:34px;
   }
-  .media-frame{border-radius:8px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:32px;}
+  .media-frame{border-radius:0; overflow:hidden; box-shadow:var(--shadow); margin-bottom:32px;}
   .media-frame img{width:100%; height:320px; object-fit:cover;}
 
   /* buttons */
@@ -165,12 +165,13 @@
   /* audit steps */
   .steps{display:flex; flex-direction:column; gap:20px; margin-top:8px;}
   .step-card{
-    display:grid; grid-template-columns:230px 1fr; gap:26px;
-    background:var(--white); border-radius:16px; padding:22px; box-shadow:var(--shadow);
-    align-items:center;
+    display:grid; grid-template-columns:300px 1fr; gap:0;
+    background:var(--white); border-radius:0; overflow:hidden; box-shadow:var(--shadow);
+    align-items:stretch;
   }
-  .step-card .step-media{border-radius:6px; overflow:hidden; height:150px;}
-  .step-card .step-media img{width:100%; height:100%; object-fit:cover;}
+  .step-card .step-media{height:100%; min-height:280px;}
+  .step-card .step-media img{width:100%; height:100%; object-fit:cover; display:block;}
+  .step-content{padding:28px 30px;}
   .step-card h3{font-family:var(--font-head); font-size:21px; font-weight:700; letter-spacing:.01em; text-transform:uppercase; color:var(--forest); margin-bottom:12px;}
   .step-card .step-intro{font-size:15.5px; color:var(--ink); opacity:.9; margin-bottom:10px;}
   .step-card ul{list-style:none; display:flex; flex-direction:column; gap:6px;}
@@ -306,7 +307,8 @@
     .pain-grid{grid-template-columns:1fr;}
     .fit-wrap{grid-template-columns:1fr;}
     .step-card{grid-template-columns:1fr;}
-    .step-card .step-media{height:170px;}
+    .step-card .step-media{height:190px; min-height:0;}
+    .step-content{padding:22px 22px 26px;}
     .about-photos img{width:200px; height:150px;}
     section{padding:48px 0;}
     .foot-grid{flex-direction:column; text-align:center;}
@@ -341,7 +343,7 @@
       </div>
       <div class="hero-portrait reveal">
         <div class="frame">
-          <img src="https://picsum.photos/seed/sophia-portrait/700/875" alt="Sophia — Founder Sophia Share">
+          <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27700%27%20height%3D%27875%27%20viewBox%3D%270%200%20700%20875%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2750%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3EFOUNDER%20PORTRAIT%3C/text%3E%3C/svg%3E" alt="Sophia — Founder Sophia Share">
           <div class="portrait-caption">
             <p>Chuyên gia vận hành Marketing &amp; Sales cho ngành giáo dục</p>
           </div>
@@ -363,14 +365,14 @@
     </div>
 
     <div class="media-frame reveal">
-      <img src="https://picsum.photos/seed/team-meeting/1100/620" alt="Đội ngũ họp bàn chiến lược">
+      <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%271100%27%20height%3D%27620%27%20viewBox%3D%270%200%201100%20620%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2744%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3ETEAM%20PHOTO%3C/text%3E%3C/svg%3E" alt="Đội ngũ họp bàn chiến lược">
     </div>
 
     <div class="quote-strip reveal">Thứ anh/chị thiếu không phải là công cụ hay nhân sự mới.<br>Mà cần một bản đồ định vị chính xác vấn đề.</div>
 
     <div class="btn-row reveal">
-       <a href="https://forms.gle/YGxZMQgUPUrvLGCBA" class="btn btn-primary">Đặt lịch "Bắt Mạch" ngay</a>
-       <a href="https://forms.gle/YGxZMQgUPUrvLGCBA" class="btn btn-outline">Kết nối với Sophia</a>
+       <a href="https://forms.gle/YGxZMQgUPUrvLGCBA" target="_blank" rel="noopener" class="btn btn-primary">Đặt lịch "Bắt Mạch" ngay</a>
+       <a href="https://forms.gle/YGxZMQgUPUrvLGCBA" target="_blank" rel="noopener" class="btn btn-outline">Kết nối với Sophia</a>
     </div>
   </div>
 </section>
@@ -382,8 +384,8 @@
 
     <div class="steps">
       <div class="step-card reveal">
-        <div class="step-media"><img src="https://picsum.photos/seed/audit-dashboard/500/400" alt="Audit phễu marketing"></div>
-        <div>
+        <div class="step-media"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27600%27%20height%3D%27500%27%20viewBox%3D%270%200%20600%20500%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2735%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3EAUDIT%20DASHBOARD%3C/text%3E%3C/svg%3E" alt="Audit phễu marketing"></div>
+        <div class="step-content">
           <h3>1. Audit phễu Marketing &amp; Bán hàng hiện tại</h3>
           <ul>
             <li>Rà soát dòng chảy data, xác định điểm nghẽn của phễu, khách hàng tiềm năng đang "rò rỉ" ở đoạn nào.</li>
@@ -393,8 +395,8 @@
       </div>
 
       <div class="step-card reveal">
-        <div class="step-media"><img src="https://picsum.photos/seed/funnel-design/500/400" alt="Thiết kế phễu Sales Marketing"></div>
-        <div>
+        <div class="step-media"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27600%27%20height%3D%27500%27%20viewBox%3D%270%200%20600%20500%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2735%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3EFUNNEL%20DESIGN%3C/text%3E%3C/svg%3E" alt="Thiết kế phễu Sales Marketing"></div>
+        <div class="step-content">
           <h3>2. Thiết kế phễu Sales &amp; Marketing cá nhân hóa</h3>
           <p class="step-intro">Sau bước 1, Sophia kê đơn và vẽ lại phễu Sales &amp; Marketing dành riêng cho doanh nghiệp:</p>
           <ul>
@@ -452,10 +454,10 @@
     <p class="section-sub reveal">Sophia là đối tác chiến lược vận hành cho SME ngành giáo dục và đào tạo kỹ năng. Sophia tin rằng marketing giỏi không phải là đổ nhiều tiền hơn, mà là bịt những lỗ thủng đang làm tiền của anh/chị chảy đi mỗi ngày. Sophia Share là kênh chia sẻ kiến thức thực chiến về Sales &amp; Marketing — không lý thuyết suông, không buzzword, chỉ những gì thực sự vận hành được trong môi trường kinh doanh thực tế.</p>
 
     <div class="about-photos reveal" id="aboutSlider">
-      <img src="https://picsum.photos/seed/team-work/400/300" alt="Đội ngũ làm việc">
-      <img src="https://picsum.photos/seed/education-training/400/300" alt="Đào tạo và giáo dục">
-      <img src="https://picsum.photos/seed/award-ceremony/400/300" alt="Trao chứng nhận">
-      <img src="https://picsum.photos/seed/graduation-day/400/300" alt="Lễ tốt nghiệp học viên">
+      <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27400%27%20height%3D%27300%27%20viewBox%3D%270%200%20400%20300%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2721%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3ETEAM%20WORK%3C/text%3E%3C/svg%3E" alt="Đội ngũ làm việc">
+      <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27400%27%20height%3D%27300%27%20viewBox%3D%270%200%20400%20300%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2721%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3ETRAINING%3C/text%3E%3C/svg%3E" alt="Đào tạo và giáo dục">
+      <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27400%27%20height%3D%27300%27%20viewBox%3D%270%200%20400%20300%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2721%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3EAWARD%20CEREMONY%3C/text%3E%3C/svg%3E" alt="Trao chứng nhận">
+      <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27400%27%20height%3D%27300%27%20viewBox%3D%270%200%20400%20300%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2721%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3EGRADUATION%3C/text%3E%3C/svg%3E" alt="Lễ tốt nghiệp học viên">
     </div>
 
     <ul class="about-facts reveal">
@@ -481,7 +483,7 @@
     <div class="quote-strip reveal">Một chiếc xe đang rò rỉ xăng — bạn có đổ thêm xăng vào không? Hay bạn sửa chỗ rò rỉ trước?</div>
     <p class="note reveal">Hầu hết doanh nghiệp tiếp tục tăng ngân sách quảng cáo trong khi cái phễu bên dưới vẫn đang thủng — kết quả là đốt tiền nhanh hơn. Gói "Bắt Mạch" Marketing giúp bạn biết chính xác đang thủng ở đâu, trước khi quyết định đổ thêm bất kỳ nguồn lực nào vào.</p>
     <div class="btn-row reveal">
-      <a href="https://forms.gle/YGxZMQgUPUrvLGCBA" class="btn btn-primary">Tôi muốn đặt lịch "Bắt Mạch" Marketing</a>
+      <a href="https://forms.gle/YGxZMQgUPUrvLGCBA" target="_blank" rel="noopener" class="btn btn-primary">Tôi muốn đặt lịch "Bắt Mạch" Marketing</a>
     </div>
     <div class="final-note reveal">*Sophia chỉ Audit chuyên sâu cho 5 doanh nghiệp mỗi tháng. Ưu tiên doanh nghiệp đăng ký trước.</div>
   </div>
@@ -491,7 +493,7 @@
   <div class="wrap">
     <div class="tt-header reveal">
       <div class="tt-profile">
-        <img class="tt-avatar" src="https://placehold.co/112x112/b0d1be/2e3d24?text=SS" alt="Sophia Share TikTok avatar" id="tt-avatar-img">
+        <img class="tt-avatar" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27112%27%20height%3D%27112%27%20viewBox%3D%270%200%20112%20112%27%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27%23b0d1be%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2734%27%20font-weight%3D%27700%27%20fill%3D%27%232e3d24%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3ESS%3C/text%3E%3C/svg%3E" alt="Sophia Share TikTok avatar" id="tt-avatar-img">
         <div>
           <div class="tt-name">Sophia Share</div>
           <div class="tt-handle">@sophiashare</div>
@@ -502,7 +504,7 @@
           <div class="tt-stat"><b>1.059</b><span>Followers</span></div>
           <div class="tt-stat"><b>4.612</b><span>Likes</span></div>
         </div>
-        <a href="https://www.tiktok.com/@sophiashare" target="_blank" rel="noopener" class="tt-follow-btn">Xem kênh TikTok</a>
+        <a href="https://www.linkedin.com/notifications/?filter=all" target="_blank" rel="noopener" class="tt-follow-btn">Xem kênh TikTok</a>
       </div>
     </div>
 
@@ -515,15 +517,15 @@
       Chỉ cần 1 dòng data-tiktok-url cho mỗi video, không cần tự tải ảnh.
     -->
     <div class="tt-grid" id="tt-grid">
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 1</a>
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 2</a>
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 3</a>
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 4</a>
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 5</a>
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 6</a>
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 7</a>
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 8</a>
-      <a class="tt-thumb tt-empty" data-tiktok-url="" target="_blank" rel="noopener">Video 9</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 1</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 2</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 3</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 4</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 5</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 6</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 7</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 8</a>
+      <a class="tt-thumb tt-empty" href="https://www.youtube.com/watch?v=nq_ci6nqgXU&list=RDnq_ci6nqgXU&start_radio=1" data-tiktok-url="" target="_blank" rel="noopener">Video 9</a>
     </div>
   </div>
 </section>
